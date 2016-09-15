@@ -1,0 +1,29 @@
+{
+  "name": "gulp-noopener",
+  "version": "1.0.0",
+  "description": "Adds rel=\"noopener\" to relevant HTML",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/tape tests/**/*.js",
+    "lint": "./node_modules/.bin/standard index.js src/**/*.js",
+    "lint-write": "./node_modules/.bin/standard-format -w index.js src/parser.js tests/parser.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zzolo/gulp-noopener.git"
+  },
+  "keywords": [
+    "security",
+    "gulp"
+  ],
+  "author": "Alan Palazzolo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zzolo/gulp-noopener/issues"
+  },
+  "homepage": "https://github.com/zzolo/gulp-noopener#readme",
+  "devDependencies": {
+    "standard": "^8.0.0",
+    "tape": "^4.6.0"
+  }
+}
