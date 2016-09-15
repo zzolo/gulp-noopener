@@ -11,7 +11,6 @@ Adds rel="noopener" to relevant HTML (`<a>` and `<form>`).
 ```js
 var noopener = require('gulp-noopener');
 
-
 gulp.task('html', function() {
   gulp.src('src/*.html')
     .pipe(noopener())
