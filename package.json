@@ -6,7 +6,7 @@
   "scripts": {
     "test": "./node_modules/.bin/tape tests/**/*.js",
     "lint": "./node_modules/.bin/standard index.js src/**/*.js",
-    "lint-write": "./node_modules/.bin/standard-format -w index.js src/parser.js tests/parser.js"
+    "lint-write": "./node_modules/.bin/standard-format -w index.js src/parser.js tests/parser.js tests/plugin.js"
   },
   "repository": {
     "type": "git",
@@ -25,5 +25,10 @@
   "devDependencies": {
     "standard": "^8.0.0",
     "tape": "^4.6.0"
+  },
+  "dependencies": {
+    "event-stream": "^3.3.4",
+    "gulp-util": "^3.0.7",
+    "through2": "^2.0.1"
   }
 }
