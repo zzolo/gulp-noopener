@@ -1,6 +1,6 @@
 # gulp-noopener
 
-Adds rel="noopener" to relevant HTML (<a> and <form>).
+Adds rel="noopener" to relevant HTML (`<a>` and `<form>`).
 
 ## Install
 
