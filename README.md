@@ -8,7 +8,7 @@ Warns you about (or adds for you) `rel="noopener"`` to relevant HTML  tags, `<a>
 
 ## Usage
 
-Get warnings.
+Display warnings.
 
 ```js
 var noopener = require('gulp-noopener');
