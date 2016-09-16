@@ -5,17 +5,54 @@ var test = require('tape')
 var gutil = require('gulp-util')
 var plugin = require('../index.js')
 
-test('plugin', function (t) {
-  t.plan(1)
+// Capture stdout
+function capture() {
+  var write = process.stdout.write;
+  var out = "";
 
-  var stream = plugin()
+  process.stdout.write = function(str) {
+    out += str;
+  };
+
+  return function() {
+    process.stdout.write = write;
+    return out;
+  };
+}
+
+
+// Warn plugin
+/*
+test('warn plugin', function (t) {
+  t.plan(1)
+  var output = capture();
+
+  var stream = plugin.warn()
 
   stream.on('data', function (data) {
-    t.equal(data.contents.toString(), '<a rel="noopener">thing</a>')
+    t.equal(output().indexOf("1:1") !== -1, true);
+    t.end()
   })
 
   stream.write(new gutil.File({
-    contents: new Buffer('<a>thing</a>')
+    contents: new Buffer('<a target="_blank">thing</a>')
+  }))
+
+  stream.end()
+})
+*/
+
+test('overwrite plugin', function (t) {
+  t.plan(1)
+
+  var stream = plugin.overwrite()
+
+  stream.on('data', function (data) {
+    t.equal(data.contents.toString(), '<a rel="noopener" target="_blank">thing</a>')
+  })
+
+  stream.write(new gutil.File({
+    contents: new Buffer('<a target="_blank">thing</a>')
   }))
 
   stream.end()
