@@ -6,31 +6,30 @@ var gutil = require('gulp-util')
 var plugin = require('../index.js')
 
 // Capture stdout
-function capture() {
-  var write = process.stdout.write;
-  var out = "";
+function capture () {
+  var write = process.stdout.write
+  var out = ''
 
-  process.stdout.write = function(str) {
-    out += str;
-  };
+  process.stdout.write = function (str) {
+    out += str
+  }
 
-  return function() {
-    process.stdout.write = write;
-    return out;
-  };
+  return function () {
+    process.stdout.write = write
+    return out
+  }
 }
-
 
 // Warn plugin
 /*
 test('warn plugin', function (t) {
   t.plan(1)
-  var output = capture();
+  var output = capture()
 
   var stream = plugin.warn()
 
   stream.on('data', function (data) {
-    t.equal(output().indexOf("1:1") !== -1, true);
+    t.equal(output().indexOf("1:1") !== -1, true)
     t.end()
   })
 

@@ -4,8 +4,8 @@
 'use strict'
 
 function overwrite (input) {
-  if (typeof input !== "string" || input === null || input === undefined) {
-    throw new Error("Input into gulp-noopener must be a string.  Saw: " + input);
+  if (typeof input !== 'string' || input === null || input === undefined) {
+    throw new Error('Input into gulp-noopener must be a string.  Saw: ' + input)
   }
 
   return input.replace(/(<a|<form)([^>]*)(>)/gi, function (match, p1, p2, p3) {

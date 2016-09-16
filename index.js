@@ -1,7 +1,7 @@
 /**
  * Gulp plugin to add rel="noopner" to HTML
  */
-'use string'
+'use strict'
 
 // Dependencies
 var through = require('through2')
@@ -23,8 +23,7 @@ function overwritePlugin () {
         if (!error) {
           try {
             file.contents = overwrite(body.toString())
-          }
-          catch(e) {
+          } catch(e) {
             this.emit('error', new gutil.PluginError('gulp-noopener', e, { fileName: file.path }))
             cb(e)
           }
@@ -32,8 +31,7 @@ function overwritePlugin () {
 
         return cb(error, file)
       }))
-    }
-    else {
+    }else {
       // File
       try {
         file.contents = new Buffer(overwrite(file.contents.toString()))
@@ -64,8 +62,7 @@ function warnPlugin () {
             if (warnings) {
               displayWarnings(warnings, file.path)
             }
-          }
-          catch(e) {
+          } catch(e) {
             this.emit('error', new gutil.PluginError('gulp-noopener', e, { fileName: file.path }))
             return cb(e)
           }
@@ -73,16 +70,14 @@ function warnPlugin () {
 
         return cb(error, file)
       }))
-    }
-    else {
+    }else {
       // File
       try {
         warnings = warn(file.contents.toString())
         if (warnings) {
           displayWarnings(warnings, file.path)
         }
-      }
-      catch(e) {
+      } catch(e) {
         this.emit('error', new gutil.PluginError('gulp-noopener', e, { fileName: file.path }))
         cb(e, file)
       }
@@ -93,24 +88,24 @@ function warnPlugin () {
 }
 
 // Display warnings
-function displayWarnings(warnings, filename) {
-  warnings.forEach(function(el) {
+function displayWarnings (warnings, filename) {
+  warnings.forEach(function (el) {
     gutil.log(
       gutil.colors.red(relativeFilename(filename)),
-      "|",
-      gutil.colors.red(el.line + ":" + el.column),
-      "|",
-      gutil.colors.magenta(el.el[0].name) + " tag has target attribute but no rel attribute.",
-      "\n\n    ",
+      '|',
+      gutil.colors.red(el.line + ':' + el.column),
+      '|',
+      gutil.colors.magenta(el.el[0].name) + ' tag has target attribute but no rel attribute.',
+      '\n\n    ',
       el.html,
-      "\n\n"
-    );
-  });
+      '\n\n'
+    )
+  })
 }
 
 // Make filename a little easier
-function relativeFilename(filename) {
-  return filename ? filename.replace(new RegExp("^" + process.cwd()), "").replace(/^\//,"") : filename;
+function relativeFilename (filename) {
+  return filename ? filename.replace(new RegExp('^' + process.cwd()), '').replace(/^\//, '') : filename
 }
 
 module.exports = {

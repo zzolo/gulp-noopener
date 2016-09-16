@@ -7,18 +7,18 @@ var overwrite = require('../src/overwrite.js')
 test('overwrite', function (t) {
   t.plan(16)
 
-  t.throws(function() {
-    overwrite(1);
-  });
-  t.throws(function() {
-    overwrite({});
-  });
-  t.throws(function() {
-    overwrite([]);
-  });
-  t.throws(function() {
-    overwrite(null);
-  });
+  t.throws(function () {
+    overwrite(1)
+  })
+  t.throws(function () {
+    overwrite({})
+  })
+  t.throws(function () {
+    overwrite([])
+  })
+  t.throws(function () {
+    overwrite(null)
+  })
 
   t.equal(overwrite('<a>thing</a>'), '<a>thing</a>')
   t.equal(overwrite('<a >thing</a>'), '<a >thing</a>')

@@ -8,15 +8,15 @@ test('warn', function (t) {
   t.plan(11)
 
   t.throws(warn)
-  t.throws(function() {
-    warn(2);
-  });
-  t.throws(function() {
-    warn(null);
-  });
-  t.throws(function() {
-    warn(undefined);
-  });
+  t.throws(function () {
+    warn(2)
+  })
+  t.throws(function () {
+    warn(null)
+  })
+  t.throws(function () {
+    warn(undefined)
+  })
 
   t.equal(warn(''), undefined)
   t.equal(warn(' '), undefined)
