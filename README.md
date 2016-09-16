@@ -1,6 +1,6 @@
 # gulp-noopener
 
-Warns you about (or adds for you) `rel="noopener"`` to relevant HTML  tags, `<a>` and `<form>`, that have their `target` set.
+Warns you about (or adds for you) `rel="noopener"` to relevant HTML  tags, `<a>` and `<form>`, that have their `target` set.
 
 ## Install
 
