@@ -1,6 +1,6 @@
 {
   "name": "gulp-noopener",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Adds rel=\"noopener\" to relevant HTML",
   "main": "index.js",
   "scripts": {
