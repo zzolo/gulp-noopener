@@ -58,7 +58,7 @@ function warnPlugin () {
       file.contents.pipe(es.wait(function (error, body) {
         if (!error) {
           try {
-            warnings = warn(body.toString())
+            var warnings = warn(body.toString())
             if (warnings) {
               displayWarnings(warnings, file.path)
             }
@@ -70,10 +70,10 @@ function warnPlugin () {
 
         return cb(error, file)
       }))
-    }else {
+    } else {
       // File
       try {
-        warnings = warn(file.contents.toString())
+        var warnings = warn(file.contents.toString())
         if (warnings) {
           displayWarnings(warnings, file.path)
         }
