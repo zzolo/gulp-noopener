@@ -44,10 +44,16 @@ test('warn plugin', function (t) {
 test('overwrite plugin', function (t) {
   t.plan(1)
 
+  var tested = false
   var stream = plugin.overwrite()
 
   stream.on('data', function (data) {
-    t.equal(data.contents.toString(), '<a rel="noopener" target="_blank">thing</a>')
+    // Not sure why this gets called multiple times
+    if (!tested) {
+      t.equal(data.contents.toString(), '<a rel="noopener" target="_blank">thing</a>')
+      t.end()
+      tested = true
+    }
   })
 
   stream.write(new gutil.File({

@@ -25,13 +25,13 @@ function overwritePlugin () {
             file.contents = overwrite(body.toString())
           } catch(e) {
             this.emit('error', new gutil.PluginError('gulp-noopener', e, { fileName: file.path }))
-            cb(e)
+            cb(e, file)
           }
         }
 
         return cb(error, file)
       }))
-    }else {
+    } else {
       // File
       try {
         file.contents = new Buffer(overwrite(file.contents.toString()))
@@ -41,7 +41,7 @@ function overwritePlugin () {
         cb(e, file)
       }
 
-      cb()
+      cb(null, file)
     }
   })
 }
@@ -64,7 +64,7 @@ function warnPlugin () {
             }
           } catch(e) {
             this.emit('error', new gutil.PluginError('gulp-noopener', e, { fileName: file.path }))
-            return cb(e)
+            return cb(e, file)
           }
         }
 
@@ -79,10 +79,10 @@ function warnPlugin () {
         }
       } catch(e) {
         this.emit('error', new gutil.PluginError('gulp-noopener', e, { fileName: file.path }))
-        cb(e, file)
+        return cb(e, file)
       }
 
-      cb()
+      cb(null, file)
     }
   })
 }
